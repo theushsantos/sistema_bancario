@@ -1,3 +1,44 @@
+
+"""
+- criar funções para as operações:
+  1: sacar
+  2: depositar
+  3: visualizar histórico
+
+- criar 2 novas funções para:
+  1: criar usuário
+  2: criar conta corrente (vinculada ao usuário)
+
+- função saque:
+  1: deve receber argumentos por nome(keyword only)
+    sugestão: saldo, valor, extrato,limite, numero saques, limite saques
+    sugestão retorno: saldo e extrato
+
+- função deposito:
+  1: receber argumentos apenas por posição (positional only)
+    sugestão: saldo, valor. extrato
+    sugestão de retorno: saldo e extrato
+
+- função extrato:
+  1: receber os argumentos por nome e posição
+    s. posicionas: saldo
+    s. nomeados: extrato
+
+- funções criar usuário e criar conta
+
+- Criar usuário:
+  1: armazenar os usuários em uma lista
+  2: dado de nome, data de nascimento, cpf(somente os números, não pode ter mais de um usuário com o mesmo numero) e endereço(string: logradoro - numero - bairro - cidade/sigla do estado)
+
+- Criar conta corrente:
+  1: armazenar contas em uma lista
+  2: dados da conta: agencia, numero e usuário
+  3: numero da conta deve ser sequencial iniciado por 1
+  4: numero da agencia é fixo "0001"
+  5: um usuário pode ter mais de uma conta mas uma conta não pode ter mais de um usuário
+
+"""
+
 menu = (f"""
 {" SISTEMA BANCARIO ".center(24,"=")}
 
@@ -35,6 +76,7 @@ while True:
 
 
     elif opcao == 2:
+
 
         if(numero_saques == LIMITE_SAQUES):
             print("Você excedeu a quantidade de saques por dia!")
