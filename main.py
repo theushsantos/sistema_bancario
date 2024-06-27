@@ -38,6 +38,15 @@
   5: um usuário pode ter mais de uma conta mas uma conta não pode ter mais de um usuário
 
 """
+def mostrar_extrato(saldo_total):
+        print("{}".format(" EXTRATO ".center(36,"=")))
+        global extrato
+        if(extrato == ""):
+            print("Não possui nenhuma movimentação!")
+        else:
+            print(extrato)
+        print("\nSaldo:                    R$ {:.2f}".format(saldo_total))
+        print("{}".format(" FIM ".center(36,"=")))
 
 menu = (f"""
 {" SISTEMA BANCARIO ".center(24,"=")}
@@ -98,14 +107,7 @@ while True:
                 print(f"Saque no valor de R${valor_saque:.2f} realizado com sucesso")
 
     elif opcao == 3:
-
-        print("{}".format(" EXTRATO ".center(36,"=")))
-        if(extrato == ""):
-            print("Não possui nenhuma movimentação!")
-        else:
-            print(extrato)
-        print("\nSaldo:                    R$ {:.2f}".format(saldo))
-        print("{}".format(" FIM ".center(36,"=")))
+        mostrar_extrato(saldo)        
 
     elif opcao == 4:
         print("Saindo...")
