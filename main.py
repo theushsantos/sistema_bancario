@@ -38,6 +38,15 @@
   5: um usuário pode ter mais de uma conta mas uma conta não pode ter mais de um usuário
 
 """
+def valida_cpf(*lista_usuario,usr_cpf):
+    valida = False
+    for usuario in lista_usuario:    
+        for valor in usuario.items():
+            valida = usr_cpf == valor.get('cpf', 'Não encontrado')
+            if(valida):
+                return valida, usr_cpf, "incluído"
+    return valida, '00000000000', 'não incluído'
+
 def mostrar_extrato(saldo_total,/,*, __extrato):
     print("{}".format(" EXTRATO ".center(36,"=")))
     if(__extrato == ""):
