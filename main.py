@@ -38,13 +38,12 @@
   5: um usuário pode ter mais de uma conta mas uma conta não pode ter mais de um usuário
 
 """
-def mostrar_extrato(saldo_total):
+def mostrar_extrato(saldo_total,/,*, __extrato):
     print("{}".format(" EXTRATO ".center(36,"=")))
-    global extrato
-    if(extrato == ""):
+    if(__extrato == ""):
         print("Não possui nenhuma movimentação!")
     else:
-        print(extrato)
+        print(__extrato)
     print("\nSaldo:                    R$ {:.2f}".format(saldo_total))
     print("{}".format(" FIM ".center(36,"=")))
 
@@ -59,14 +58,14 @@ def realizar_deposito(valor, saldo_total,grava_extrato,/):
         texto = "Deposito realizado com Sucesso! Valor R$ {:.2f} ".format(valor)
     return texto, saldo_total, grava_extrato
 
-def realizar_saque(*,valor, saldo_total,num_saques,grava_extrato,limite_valor):
+def realizar_saque(*,valor, saldo_total,num_saques,grava_extrato,valor_maximo):
     if saldo == 0.0:
         texto = (f"não será possivel sacar! Saldo: R$ {saldo:.2f}")
-    elif(valor > limite_valor):
+    elif(valor > valor_maximo):
         texto = ("Você excedeu o valor maximo de saque!")
     elif(valor > saldo_total):
         texto = ("Saldo é insuficiente, tente um valor menor!")
-    elif(valor < 0.0):
+    elif(valor <= 0.0):
         texto = ("Ops! valor é menor ou igual a zero, tente com um valor maior")
     else:
         num_saques += 1
@@ -90,11 +89,11 @@ menu = (f"""
 valor_saque = 0
 valor_deposito = 0
 saldo = 0
-limite = 500
+qtd_saques = 0
 
 extrato = """"""
 
-numero_saques = 0
+valor_max_transacao = 500 
 LIMITE_SAQUES = 3
 
 
@@ -111,21 +110,21 @@ while True:
 
     elif opcao == 2:
 
-        if(numero_saques == LIMITE_SAQUES):
+        if(qtd_saques == LIMITE_SAQUES):
             print("Você excedeu a quantidade de saques por dia!")
 
         else:
             valor_saque = float(input("Quanto deseja sacar? "))
-            mensagem_retorno_saque, numero_saques, saldo, extrato = realizar_saque(valor=valor_saque,
+            mensagem_retorno_saque, qtd_saques, saldo, extrato = realizar_saque(valor=valor_saque,
                                                                                    saldo_total=saldo,
-                                                                                   num_saques=numero_saques,
+                                                                                   num_saques=qtd_saques,
                                                                                    grava_extrato=extrato,
-                                                                                   limite_valor=limite)
+                                                                                   valor_maximo=valor_max_transacao)
             print(mensagem_retorno_saque)
             
 
     elif opcao == 3:
-        mostrar_extrato(saldo)        
+        mostrar_extrato(saldo,__extrato=extrato)      
 
     elif opcao == 4:
         print("Saindo...")
