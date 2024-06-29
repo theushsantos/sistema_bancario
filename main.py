@@ -38,14 +38,7 @@
   5: um usuário pode ter mais de uma conta mas uma conta não pode ter mais de um usuário
 
 """
-def valida_cpf(*lista_usuario,usr_cpf):
-    valida = False
-    for usuario in lista_usuario:    
-        for valor in usuario.items():
-            valida = usr_cpf == valor.get('cpf', 'Não encontrado')
-            if(valida):
-                return valida, usr_cpf, "incluído"
-    return valida, '00000000000', 'não incluído'
+import usuarios
 
 def mostrar_extrato(saldo_total,/,*, __extrato):
     print("{}".format(" EXTRATO ".center(36,"=")))
@@ -91,7 +84,11 @@ menu = (f"""
 [1] Depositar
 [2] Sacar
 [3] Extrato
-[4] Sair
+[4] Cadastrar usuários
+[5] Cadastrar Conta
+[6] Listar usuários
+[7] Listar Contas
+[8] Sair
 
 =>""")
 
@@ -136,9 +133,19 @@ while True:
         mostrar_extrato(saldo,__extrato=extrato)      
 
     elif opcao == 4:
-        print("Saindo...")
+        usuarios.cadastro_de_usuarios()
+        continue
+    elif opcao == 5:
+        print("Contas...")
+        continue
+    elif opcao == 6:
+        usuarios.listar_usuarios_cadastrados(usuarios.users)
+        voltar = input("\nVoltar\n=> ")       
+    elif opcao == 7:
+        print("Contas...")
+    elif opcao == 8:
+        print('saindo...')
         break
-    
     else:
         print("Ops! opção selecionada inválida")
         continue
