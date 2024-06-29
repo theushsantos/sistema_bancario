@@ -130,7 +130,8 @@ while True:
             
 
     elif opcao == 3:
-        mostrar_extrato(saldo,__extrato=extrato)      
+        mostrar_extrato(saldo,__extrato=extrato) 
+        voltar = input("\nVoltar\n=> ")      
 
     elif opcao == 4:
         usuarios.cadastro_de_usuarios()
