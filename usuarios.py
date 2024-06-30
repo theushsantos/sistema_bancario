@@ -2,8 +2,8 @@ users = [
     {
         'nome': 'nome',
         'data_nascimento': 'dd/mm/aaaa',
-        'cpf':'00000000000',
-        'endereco':'logradouro-numero-bairro-cidade/estado'.strip('-')
+        'cpf':00000000000,
+        'endereco':'logradouro-numero-bairro-cidade/estado'
     }
 ]
 

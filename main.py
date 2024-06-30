@@ -1,44 +1,5 @@
 
-"""
-- criar funções para as operações:
-  1: sacar
-  2: depositar
-  3: visualizar histórico
-
-- criar 2 novas funções para:
-  1: criar usuário
-  2: criar conta corrente (vinculada ao usuário)
-
-- função saque:
-  1: deve receber argumentos por nome(keyword only)
-    sugestão: saldo, valor, extrato,limite, numero saques, limite saques
-    sugestão retorno: saldo e extrato
-
-- função deposito:
-  1: receber argumentos apenas por posição (positional only)
-    sugestão: saldo, valor. extrato
-    sugestão de retorno: saldo e extrato
-
-- função extrato:
-  1: receber os argumentos por nome e posição
-    s. posicionas: saldo
-    s. nomeados: extrato
-
-- funções criar usuário e criar conta
-
-- Criar usuário:
-  1: armazenar os usuários em uma lista
-  2: dado de nome, data de nascimento, cpf(somente os números, não pode ter mais de um usuário com o mesmo numero) e endereço(string: logradoro - numero - bairro - cidade/sigla do estado)
-
-- Criar conta corrente:
-  1: armazenar contas em uma lista
-  2: dados da conta: agencia, numero e usuário
-  3: numero da conta deve ser sequencial iniciado por 1
-  4: numero da agencia é fixo "0001"
-  5: um usuário pode ter mais de uma conta mas uma conta não pode ter mais de um usuário
-
-"""
-import usuarios
+import usuarios,conta_corrente
 
 def mostrar_extrato(saldo_total,/,*, __extrato):
     print("{}".format(" EXTRATO ".center(36,"=")))
@@ -137,13 +98,14 @@ while True:
         usuarios.cadastro_de_usuarios()
         continue
     elif opcao == 5:
-        print("Contas...")
+        conta_corrente.criar_conta()
         continue
     elif opcao == 6:
         usuarios.listar_usuarios_cadastrados(usuarios.users)
         voltar = input("\nVoltar\n=> ")       
     elif opcao == 7:
-        print("Contas...")
+        conta_corrente.listar_contas_cadastradas()
+        voltar = input("\nVoltar\n=> ")
     elif opcao == 8:
         print('saindo...')
         break
