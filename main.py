@@ -1,4 +1,3 @@
-
 import usuarios,conta_corrente
 
 def mostrar_extrato(saldo_total,/,*, __extrato):
